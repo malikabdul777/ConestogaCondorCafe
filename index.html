@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Condors Coffee</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+    <link type="text/css" rel="stylesheet" href="cafe.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" defer></script>
+    <script src="./scripts/homeScript.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <img src="./images/logo caffee.png" alt="logo" class="logo" />
+      <nav>
+        <a href="#" class="navLinks">Home</a>
+        <a href="./aboutUs.html" class="navLinks">About Us</a>
+      </nav>
+      <div class="sideNavMenu">
+        <a href="#" class="navLinks">Home</a>
+        <a href="./aboutUs.html" class="navLinks">About Us</a>
+      </div>
+      <div class="hamburgerMenu">
+        <div class="menuStick"></div>
+        <div class="menuStick"></div>
+        <div class="menuStick"></div>
+      </div>
+    </header>
+
+    <main class="mainWrapper">
+      <a href="#cart" class="goToCartLink">
+        <div class="cartButton">
+          <span class="material-symbols-outlined"> shopping_cart </span>
+        </div></a
+      >
+      <section class="menuShowCase">
+        <div class="menuItemsInnerContainer">
+          <div class="menuItemCard">
+            <div class="menuItemImageContainer">
+              <img
+                src="./images/Cappuccino.png"
+                alt=""
+                class="cappuccinoImage itemImage"
+              />
+            </div>
+            <div class="itemDetailsContainer">
+              <h2>Cappuccino</h2>
+              <p>150 Calories per serving</p>
+              <div class="priceContainer">
+                <h3>$ 4.50</h3>
+                <div class="iconContainer cappuccinoAddIcon">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menuItemCard">
+            <div class="menuItemImageContainer">
+              <img
+                src="./images/Biscotti.png"
+                alt=""
+                class="biscottiImage itemImage"
+              />
+            </div>
+            <div class="itemDetailsContainer">
+              <h2>Biscotti</h2>
+              <p>150 Calories per serving</p>
+              <div class="priceContainer">
+                <h3>$ 3.69</h3>
+                <div class="iconContainer biscottiAddIcon">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menuItemCard">
+            <div class="menuItemImageContainer">
+              <img
+                src="./images/Drip Coffee.png"
+                alt=""
+                class="dripCoffeeImage itemImage"
+              />
+            </div>
+            <div class="itemDetailsContainer">
+              <h2>Drip Coffee</h2>
+              <p>150 Calories per serving</p>
+              <div class="priceContainer">
+                <h3>$ 2.50</h3>
+                <div class="iconContainer dripCoffeeAddIcon">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menuItemCard">
+            <div class="menuItemImageContainer">
+              <img
+                src="./images/Scone.png"
+                alt=""
+                class="sconeImage itemImage"
+              />
+            </div>
+            <div class="itemDetailsContainer">
+              <h2>Scone</h2>
+              <p>150 Calories per serving</p>
+              <div class="priceContainer">
+                <h3>$ 6.50</h3>
+                <div class="iconContainer sconeAddIcon">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menuItemCard">
+            <div class="menuItemImageContainer">
+              <img
+                src="./images/Latte.png"
+                alt=""
+                class="latteImage itemImage"
+              />
+            </div>
+            <div class="itemDetailsContainer">
+              <h2>Latte</h2>
+              <p>150 Calories per serving</p>
+              <div class="priceContainer">
+                <h3>$ 3.90</h3>
+                <div class="iconContainer latteAddIcon">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menuItemCard">
+            <div class="menuItemImageContainer">
+              <img
+                src="./images/Espresso.png"
+                alt=""
+                class="espressoImage itemImage"
+              />
+            </div>
+            <div class="itemDetailsContainer">
+              <h2>Espresso</h2>
+              <p>150 Calories per serving</p>
+              <div class="priceContainer">
+                <h3>$ 3.75</h3>
+                <div class="iconContainer espressoAddIcon">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="menuItemsInnerContainer"></div> -->
+      </section>
+      <div class="verticalDivider"></div>
+      <section class="cart" id="cart">
+        <div class="cartHeader">
+          <h2>Your Cart</h2>
+          <button class="clearCartBtn clearBackgroundBtn">
+            Clear Cart
+            <span class="material-symbols-outlined crossIcon"> close </span>
+          </button>
+        </div>
+        <div class="cartItems">
+          <!-- <div class="cartItemCard">
+            <div class="cartItemCardLeftContent">
+              <img
+                src="./images/Cappuccino.png"
+                alt="Cappuccino"
+                class="cartItemImage"
+              />
+              <div>
+                <h2 class="itemTitle">Cappuccino</h2>
+                <p>Cost <span class="itemPrice">$9.00</span></p>
+              </div>
+            </div>
+
+            <div class="cartItemCardRightContent">
+              <button class="clearBackgroundBtn">
+                <span class="material-symbols-outlined"> remove </span>
+              </button>
+              <span class="itemQuantity">1</span>
+              <button class="clearBackgroundBtn">
+                <span class="material-symbols-outlined"> add </span>
+              </button>
+            </div>
+          </div> -->
+        </div>
+        <div class="cartFooterContainer">
+          <div class="horizontalDivider"></div>
+          <div class="cartTotalContainer">
+            <h2>Cart Total</h2>
+            <span class="cartTotal">$ 0.00</span>
+          </div>
+          <div>
+            <button class="checkOutBtn">Checkout</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

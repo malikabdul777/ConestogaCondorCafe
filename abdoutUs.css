@@ -1,0 +1,110 @@
+main {
+  width: 100vw;
+  padding-inline: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aboutUsContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ourVisionImageContainer {
+  height: 35rem;
+  width: 30rem;
+  border-radius: 2rem;
+}
+.ourVisionImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+.ourVisionContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.textContainer {
+  margin-left: 10rem;
+  flex: 4;
+}
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 5rem;
+  color: #b8833c;
+}
+.textContainer p {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+}
+.readMoreBtn {
+  background-color: transparent;
+  color: #b8833c;
+  border: #b8833c solid 0.2rem;
+  padding: 1.5rem 4rem;
+  border-radius: 5rem;
+  margin-top: 3rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color, background-color 0.3s ease-in-out;
+}
+.readMoreBtn:hover {
+  background-color: #b8833c;
+  color: #fff;
+}
+.ourApproachContainer {
+  margin-top: 8rem;
+}
+.ourApproachContainer .textContainer {
+  margin-right: 10rem;
+  margin-left: 0;
+  width: 50rem;
+}
+
+/* Media quires */
+
+@media screen and (max-width: 1000px) {
+  main {
+    padding-inline: 5rem;
+  }
+  .ourVisionContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .textContainer {
+    margin-left: 0;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100vw;
+    padding-inline: 4rem;
+  }
+  .ourApproachContainer {
+    margin-top: 0;
+    flex-direction: column-reverse;
+    margin-top: 5rem;
+  }
+  .ourApproachTextContainer {
+    padding-inline: 4rem;
+    margin-bottom: 4rem;
+  }
+  .ourApproachContainer .ourApproachTextContainer {
+    width: 100vw;
+    margin-inline: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .ourVisionImageContainer {
+    height: 25rem;
+    width: 20rem;
+    border-radius: 2rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+}
