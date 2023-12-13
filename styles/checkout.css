@@ -1,0 +1,41 @@
+/* Checkout Page */
+.checkoutPageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 3rem;
+}
+.checkoutPageTitle {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.checkoutPageTitle span {
+  font-size: 3.5rem;
+}
+.checkOutDescription {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.orderNumber {
+  font-weight: 700;
+  color: #b8833c;
+}
+.newOrderButton {
+  background-color: #b8833c;
+  border: none;
+  border-radius: 5rem;
+  padding: 1.5rem 3rem;
+  color: #fff;
+  margin-top: 3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.newOrderButton:hover {
+  transform: scale(1.06);
+}
+.newOrderButton:active {
+  transform: scale(0.94);
+}

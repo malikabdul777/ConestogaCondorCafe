@@ -16,6 +16,8 @@ const cartTotalElement = document.querySelector(".cartTotal");
 
 const goToCartLink = document.querySelector(".goToCartLink");
 const cartSection = document.querySelector(".cart");
+const checkOutBtn = document.querySelector(".checkOutBtn");
+const checkOutBtnWrapper = document.querySelector(".checkOutBtnWrapper");
 
 // Side bar open & close for small Screens
 hamburgerMenu.addEventListener("click", () => {
@@ -27,12 +29,23 @@ hamburgerMenu.addEventListener("click", () => {
 let cartItemsArray = [];
 let cartTotal = 0.0;
 
+// Disable Checkout button if cart is empty
+const updateCheckoutButtonState = () => {
+  if (cartItemsArray.length === 0) {
+    checkOutBtn.classList.add("disabledButton");
+    checkOutBtnWrapper.classList.add("disabledCheckoutBtnWrapper");
+  } else {
+    checkOutBtn.classList.remove("disabledButton");
+    checkOutBtnWrapper.classList.remove("disabledCheckoutBtnWrapper");
+  }
+};
+
 const updateCart = () => {
   cartItemsArray.forEach((item) => {
     cartItemsContainer.innerHTML += `<div class="cartItemCard">
         <div class="cartItemCardLeftContent">
           <img
-            src="./images/${item.itemName}.png"
+            src="./images/${item.itemName.replaceAll(" ", "")}.png"
             alt="${item.itemName}"
             class="cartItemImage"
           />
@@ -58,30 +71,31 @@ const updateCart = () => {
       </div>`;
   });
   cartTotalElement.textContent = `$ ${cartTotal.toFixed(2)}`;
+  updateCheckoutButtonState();
 };
 updateCart();
-
-const clearCart = () => {
+checkOutBtn.addEventListener(
+  "click",
+  () => (window.location.href = "../pages/checkout.html")
+);
+const clearCartElement = () => {
   cartItemsContainer.innerHTML = "";
-  cartTotalElement.textContent = `$ 0.00`;
 };
 
 const addItemToCart = (itemName, cost) => {
-  return () => {
-    const existingItem = cartItemsArray.find(
-      (item) => item.itemName === itemName
-    );
+  const existingItem = cartItemsArray.find(
+    (item) => item.itemName === itemName
+  );
 
-    cartTotalElement.textContent = `$ ${(cartTotal += cost).toFixed(2)}`;
-    if (existingItem) {
-      existingItem.quantity += 1;
-      existingItem.cost += cost;
-    } else {
-      cartItemsArray.push({ itemName, cost, quantity: 1 });
-    }
-    clearCart();
-    updateCart();
-  };
+  cartTotalElement.textContent = `$ ${(cartTotal += cost).toFixed(2)}`;
+  if (existingItem) {
+    existingItem.quantity += 1;
+    existingItem.cost += cost;
+  } else {
+    cartItemsArray.push({ itemName, cost, quantity: 1 });
+  }
+  clearCartElement();
+  updateCart();
 };
 
 const removeItemToCart = (itemName, cost) => {
@@ -99,23 +113,25 @@ const removeItemToCart = (itemName, cost) => {
     );
   }
 
-  clearCart();
+  clearCartElement();
   updateCart();
 };
 
 // Adding items to cart when user clicks on add buttons in menu item cards
-cappuccinoCardAddIcon.addEventListener(
-  "click",
+cappuccinoCardAddIcon.addEventListener("click", () =>
   addItemToCart("Cappuccino", 4.5)
 );
-biscottiCardAddIcon.addEventListener("click", addItemToCart("Biscotti", 3.69));
-dripCoffeeCardAddIcon.addEventListener(
-  "click",
+biscottiCardAddIcon.addEventListener("click", () =>
+  addItemToCart("Biscotti", 3.69)
+);
+dripCoffeeCardAddIcon.addEventListener("click", () =>
   addItemToCart("Drip Coffee", 2.5)
 );
-sconeCardAddIcon.addEventListener("click", addItemToCart("Scone", 6.5));
-latteCardAddIcon.addEventListener("click", addItemToCart("Latte", 3.9));
-espressoCardAddIcon.addEventListener("click", addItemToCart("Espresso", 3.75));
+sconeCardAddIcon.addEventListener("click", () => addItemToCart("Scone", 6.5));
+latteCardAddIcon.addEventListener("click", () => addItemToCart("Latte", 3.9));
+espressoCardAddIcon.addEventListener("click", () =>
+  addItemToCart("Espresso", 3.75)
+);
 
 // Event Handler for add and remove buttons in cart item card
 cartItemsContainer.addEventListener("click", (event) => {
@@ -124,9 +140,7 @@ cartItemsContainer.addEventListener("click", (event) => {
   // Add or remove cart items using quantity buttons in cart item cards
   const handleCartItemAction = (className, itemName, cost, action) => {
     if (target.classList.contains(className)) {
-      action === addItemToCart
-        ? action(itemName, cost)()
-        : action(itemName, cost);
+      action(itemName, cost);
     }
   };
 
@@ -168,7 +182,13 @@ cartItemsContainer.addEventListener("click", (event) => {
 });
 
 // Cart Clear Button Click handler
-clearCartBtn.addEventListener("click", clearCart);
+clearCartBtn.addEventListener("click", () => {
+  clearCartElement();
+  cartItemsArray = [];
+  cartTotal = 0;
+  cartTotalElement.textContent = `$ 0.00`;
+  updateCheckoutButtonState();
+});
 
 //Hide cart Floating button when cart is in view
 const isInViewport = (element) => {
@@ -184,3 +204,66 @@ window.addEventListener("scroll", handleScroll);
 handleScroll();
 
 window.addEventListener("resize", handleScroll);
+
+// Menu Item Image id's for Image rollOver when hover
+const menuItemImageIds = [
+  "cappuccino",
+  "biscotti",
+  "dripCoffee",
+  "scone",
+  "latte",
+  "espresso",
+];
+
+// Preload rollover images
+menuItemImageIds.forEach((id) => {
+  const rolloverImage = new Image();
+  rolloverImage.src = `../images/${id}2.png`;
+});
+
+menuItemImageIds.forEach((id) => {
+  // Menu Item Images
+  const image = document.querySelector(`#${id}`);
+
+  image.addEventListener("click", () => {
+    console.log("click", id);
+    switch (id) {
+      case "cappuccino":
+        addItemToCart("Cappuccino", 4.5);
+        break;
+      case "biscotti":
+        addItemToCart("Biscotti", 3.69);
+        break;
+      case "dripCoffee":
+        addItemToCart("Drip Coffee", 2.5);
+        break;
+      case "scone":
+        addItemToCart("Scone", 6.5);
+        break;
+      case "latte":
+        addItemToCart("Latte", 3.9);
+        break;
+      case "espresso":
+        addItemToCart("Espresso", 3.75);
+        break;
+    }
+  });
+
+  image.addEventListener("mouseover", () => {
+    image.style.opacity = 0; // Fade out
+
+    setTimeout(() => {
+      image.setAttribute("src", `../images/${id}2.png`);
+      image.style.opacity = 1; // Fade in
+    }, 150);
+  });
+
+  image.addEventListener("mouseout", () => {
+    image.style.opacity = 0; // Fade out
+
+    setTimeout(() => {
+      image.setAttribute("src", `../images/${id}.png`);
+      image.style.opacity = 1; // Fade in
+    }, 150);
+  });
+});
